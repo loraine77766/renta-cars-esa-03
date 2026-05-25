@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { CarFront, Phone } from 'lucide-react';
 
 export default function Footer() {
@@ -14,16 +14,16 @@ export default function Footer() {
               <span className="font-headline text-lg font-bold">Renta Cars ESA</span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Agencia On-Line con asistencia telefónica. Te ayudamos a encontrar tu auto ideal en Cuba.
+              Agencia On-Line con asistencia telefonica. Te ayudamos a encontrar tu auto ideal en Cuba.
             </p>
           </div>
           <div>
             <h4 className="font-headline text-white font-semibold mb-4">Enlaces</h4>
             <div className="flex flex-col gap-2">
-              <Link href="/terminos-y-condiciones" className="text-sm text-gray-400 hover:text-primary transition-colors">Términos y Condiciones</Link>
-              <Link href="/politica-de-privacidad" className="text-sm text-gray-400 hover:text-primary transition-colors">Política de Privacidad</Link>
-              <Link href="/politica-de-cookies" className="text-sm text-gray-400 hover:text-primary transition-colors">Política de Cookies</Link>
-              <Link href="/contactanos" className="text-sm text-gray-400 hover:text-primary transition-colors">Contáctanos</Link>
+              <Link href="/terminos-y-condiciones" className="text-sm text-gray-400 hover:text-primary transition-colors">Terminos y Condiciones</Link>
+              <Link href="/politica-de-privacidad" className="text-sm text-gray-400 hover:text-primary transition-colors">Politica de Privacidad</Link>
+              <Link href="/politica-de-cookies" className="text-sm text-gray-400 hover:text-primary transition-colors">Politica de Cookies</Link>
+              <Link href="/contactanos" className="text-sm text-gray-400 hover:text-primary transition-colors">Contactanos</Link>
             </div>
           </div>
           <div>
