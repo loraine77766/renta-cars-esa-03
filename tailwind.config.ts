@@ -17,9 +17,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Roboto', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
-        code: ['monospace'],
+        code: ['IBM Plex Mono', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
