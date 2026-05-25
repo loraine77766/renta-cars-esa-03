@@ -17,7 +17,7 @@ function ThemeToggle() {
     return (
         <DropdownMenu>
         <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+            <Button variant="ghost" size="icon" className="text-white/80 hover:text-primary">
             <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             <span className="sr-only">Toggle theme</span>
@@ -41,20 +41,20 @@ export default function Header() {
   ];
 
   return (
-    <header className="hero-gradient sticky top-0 z-40 shadow-md">
+    <header className="bg-secondary text-white sticky top-0 z-40 shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-white/80 transition-colors">
-            <div className="bg-white/20 p-1.5 rounded-lg">
-              <CarFront className="h-6 w-6" />
+          <Link href="/" className="flex items-center gap-2 text-white hover:text-primary transition-colors">
+            <div className="bg-primary/20 p-1.5 rounded">
+              <CarFront className="h-6 w-6 text-primary" />
             </div>
             <span className="font-headline text-xl font-bold tracking-tight">Renta Cars ESA</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-               <Button variant="ghost" asChild key={link.href} className="text-white/90 hover:text-white hover:bg-white/15 rounded-lg">
-                <Link href={link.href} target={link.target} className="flex items-center gap-2">
+               <Button variant="ghost" asChild key={link.href} className="text-white/80 hover:text-primary hover:bg-white/5 rounded">
+                <Link href={link.href} target={link.target} className="flex items-center gap-2 text-sm">
                     {link.icon}
                     <span>{link.label}</span>
                 </Link>
@@ -68,18 +68,18 @@ export default function Header() {
              <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-white dark:bg-gray-900">
+              <SheetContent side="right" className="bg-white">
                 <nav className="flex flex-col gap-4 mt-8">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       target={link.target}
-                      className="text-lg font-medium flex items-center gap-3 p-3 rounded-lg hover:bg-secondary transition-colors"
+                      className="text-lg font-medium flex items-center gap-3 p-3 rounded hover:bg-secondary/5 transition-colors"
                     >
                       {link.icon}
                       {link.label}
