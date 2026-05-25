@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { LifeBuoy, CarFront, HelpCircle, Menu, Moon, Sun } from 'lucide-react';
@@ -41,7 +41,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="hero-tropical sticky top-0 z-40 shadow-md">
+    <header className="hero-gradient sticky top-0 z-40 shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 text-white hover:text-white/80 transition-colors">
