@@ -4,8 +4,7 @@ import { CarList } from '@/components/CarList';
 import { cars } from '@/lib/cars';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MessageSquare, Clock, ShieldCheck, ListChecks, Map, CalendarSearch, Car, User, CreditCard, MailCheck, ArrowRight, Star } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+
 
 export default function Home() {
   const sortedCars = [...cars].sort((a, b) => a.pricePerDay - b.pricePerDay);
@@ -36,12 +35,12 @@ export default function Home() {
               Vehiculos de calidad con el respaldo y la confianza que mereces.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold rounded px-8 shadow-lg">
-                <Link href="/autos">Ver Flota <ArrowRight className="ml-2 h-5 w-5" /></Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/40 text-white hover:bg-white/10 rounded px-8">
-                <Link href="#como-funciona">Como funciona?</Link>
-              </Button>
+              <a href="/autos" className="inline-flex items-center justify-center text-lg font-bold rounded px-8 py-3 shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                Ver Flota <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
+              <a href="#como-funciona" className="inline-flex items-center justify-center text-lg rounded px-8 py-3 border-2 border-white/40 text-white hover:bg-white/10 transition-colors">
+                Como funciona?
+              </a>
             </div>
           </div>
         </section>
@@ -72,9 +71,9 @@ export default function Home() {
                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-secondary">Flota Destacada</h2>
                 <p className="text-muted-foreground mt-2 text-sm">Seleccion exclusiva</p>
               </div>
-              <Button asChild variant="outline" className="hidden sm:flex border-secondary/30 text-secondary hover:bg-secondary hover:text-white rounded">
-                <Link href="/autos">Ver todos <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
+              <a href="/autos" className="hidden sm:inline-flex items-center justify-center rounded px-4 py-2 border-2 border-secondary/30 text-secondary hover:bg-secondary hover:text-white transition-colors">
+                Ver todos <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </div>
             <CarList cars={recommendedCars} />
           </div>
@@ -148,9 +147,9 @@ export default function Home() {
           <div className="container mx-auto px-4 text-center">
             <h2 className="font-headline text-3xl font-bold text-white mb-4 tracking-tight">Tu viaje comienza aqui</h2>
             <p className="text-white/80 mb-8 max-w-lg mx-auto text-sm">Reserva tu auto hoy y recorre Cuba con estilo</p>
-            <Button asChild size="lg" className="bg-primary text-secondary hover:bg-primary/90 font-bold rounded px-10 shadow-lg">
-              <Link href="/autos">Ver Autos <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
+            <a href="/autos" className="inline-flex items-center justify-center text-lg font-bold rounded px-10 py-3 shadow-lg bg-primary text-secondary hover:bg-primary/90 transition-colors">
+              Ver Autos <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </div>
         </section>
 
