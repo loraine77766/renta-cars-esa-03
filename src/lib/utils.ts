@@ -2,27 +2,29 @@ import { clsx, type ClassValue } from "clsx"
 import { differenceInDays, parseISO, isValid } from "date-fns";
 import { twMerge } from "tailwind-merge"
 import type { ReservationDetails } from "./types";
+import { FUEL_PRICE_PER_LITER } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function calculateReservationDetails(startDate: Date, endDate: Date, pricePerDay: number): ReservationDetails | null {
+export function calculateReservationDetails(startDate: Date, endDate: Date, pricePerDay: number, fuelLiters?: number): ReservationDetails | null {
   if (!isValid(startDate) || !isValid(endDate) || endDate < startDate) {
     return null;
   }
 
   const rentalDays = differenceInDays(endDate, startDate);
 
+  const fuelCost = fuelLiters ? fuelLiters * FUEL_PRICE_PER_LITER : 0;
+
   if (rentalDays <= 0) {
-    // Treat same-day rental as 1 day
     const singleDayPrice = pricePerDay;
     const deposit = 250;
     const discountPercentage = 0.20;
     const discountedRentPrice = singleDayPrice * (1 - discountPercentage);
     const discountAmount = singleDayPrice - discountedRentPrice;
-    const totalWithoutDiscount = singleDayPrice + deposit;
-    const totalWithDiscount = discountedRentPrice + deposit;
+    const totalWithoutDiscount = singleDayPrice + deposit + fuelCost;
+    const totalWithDiscount = discountedRentPrice + deposit + fuelCost;
     
     return {
       rentalDays: 1,
@@ -30,23 +32,22 @@ export function calculateReservationDetails(startDate: Date, endDate: Date, pric
       deposit,
       totalWithDiscount,
       totalWithoutDiscount,
-      discountAmount
+      discountAmount,
+      fuelLiters,
+      fuelCost
     };
   }
 
   const rentPrice = rentalDays * pricePerDay;
   const deposit = 250;
-  const discountPercentage = 0.20; // 20% discount
+  const discountPercentage = 0.20;
 
-  // Total if paying later (rent + deposit)
-  const totalWithoutDiscount = rentPrice + deposit;
+  const totalWithoutDiscount = rentPrice + deposit + fuelCost;
   
-  // Calculate discounted rent price
   const discountedRentPrice = rentPrice * (1 - discountPercentage);
   const discountAmount = rentPrice - discountedRentPrice;
   
-  // Total if paying in advance (discounted rent + deposit)
-  const totalWithDiscount = discountedRentPrice + deposit;
+  const totalWithDiscount = discountedRentPrice + deposit + fuelCost;
 
   return {
     rentalDays,
@@ -54,6 +55,8 @@ export function calculateReservationDetails(startDate: Date, endDate: Date, pric
     deposit,
     totalWithDiscount,
     totalWithoutDiscount,
-    discountAmount
+    discountAmount,
+    fuelLiters,
+    fuelCost
   };
 }

@@ -1,37 +1,22 @@
-import type {Metadata} from 'next';
-import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from '@/components/ThemeProvider';
+import type { Metadata } from "next"
+import "./globals.css"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
-  title: 'Renta Cars ESA - Renta de Autos en Cuba',
-  description: 'La mejor opcion para rentar autos en Cuba. Encuentra el vehiculo perfecto para tu viaje.',
-  icons: { icon: '/favicon.svg' },
-};
+  title: "Cuba Car Renta - Renta de Autos en Cuba",
+  description: "La mejor opcion para rentar autos en Cuba.",
+  icons: { icon: "/favicon.svg" },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased">
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-        </ThemeProvider>
+    <html lang="es">
+      <body className="antialiased">
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
-  );
+  )
 }
